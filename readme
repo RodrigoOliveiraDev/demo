@@ -18,3 +18,5 @@ e do frontEnd estão em webapp
 Para executar basta importar o banco de dados
 credenciais localhost porta 5432 nome do banco: postgres user:  postgres senha: masterkey
 basta subir docker compose para executar o servidor do banco.
+
+.tar e diagrama do banco estarão na pasta demo/banco
