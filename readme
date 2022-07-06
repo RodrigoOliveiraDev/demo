@@ -1,0 +1,17 @@
+Segue apresentação do projeto.
+Possui apenas a tela principal, em que terá a table para poder visualizar as tarefas.
+Clicar no botão azul do painel para incluir uma nova, ao clicar na data, clicar no botão de incluir(no primefaces, quando tem hora, ele não fecha automático).
+Ao inserir uma nova será simplesmente adicionado como ultimo da ordem.
+Ao arrastar as tarefas pelo painel, será refeita as ordens e persistido no banco, para que o usuário possa escolher as posições das tarefas que acha mais importante.
+Fica diponível no painel a função de conlcuir a tarefa, editar a tarefa e excluir a tarefa.
+em cima do painel é apresentado quatro filtros:
+Todos: que irá buscar todas.
+Hoje: filtrará as tarefas de hoje.
+A realizar: tarefas que não estão marcadas como concluidas.
+Concluido: tarefas marcadas como concluidas.
+
+Fiquei com a ideia de criar o tipoTarefa que iria separar as tarefas por listas, para o usuário poder se organizar, mas infelizmente não deu tempo.
+
+Para executar basta importar o banco de dados
+credenciais localhost porta 5432 nome do banco: postgres user:  postgres senha: masterkey
+basta subir docker compose para executar o servidor do banco.
