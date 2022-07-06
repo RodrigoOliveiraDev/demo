@@ -1,0 +1,132 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+
+>
+<h:head>
+    <link href="resources/cssLayout.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+</h:head>
+<body style="background-image: url('images/background.jpg'); background-size: 100%">
+<h:form id="formPrinc" prependId="false">
+    <p:messages id="messages" showDetail="true" closable="true">
+        <p:autoUpdate/>
+    </p:messages>
+    <nav class="navbar">
+        <a class="toDoText" href="menuPrincipal.jr">
+            <img src="/images/logo.png"  class="d-inline-block align-top logo" alt=""/>
+            To do List
+        </a>
+    </nav>
+    <p:panel id="panel" class="panel" header="Tarefas" footer="Lista de tarefas.">
+        <f:facet name="header"  class="panelHeader">
+            <p:selectOneMenu id="lazy" value="#{tarefa.filtroListarTarefa}" dynamic="true">
+                <p:ajax listener="#{tarefa.filtrar}" update="dataTable"/>
+                <f:selectItem itemLabel="Todos" itemValue="0" noSelectionOption="true"/>
+                <f:selectItem itemLabel="Hoje" itemValue="D" noSelectionOption="true"/>
+                <f:selectItem itemLabel="A realizar" itemValue="N" noSelectionOption="true"/>
+                <f:selectItem itemLabel="Concluido" itemValue="C" noSelectionOption="true"/>
+            </p:selectOneMenu>
+        </f:facet>
+        <f:facet name="actions">
+            <p:commandLink onclick="PF('dialog').show();">
+                <p:graphicImage value="/images/insert.png" class="imageIcon2"/>
+            </p:commandLink>
+        </f:facet>
+        <p:dataTable class="align center dataTable" id="dataTable" var="item" value="#{tarefa.tarefas}" prependId="false"
+                     rowIndexVar="rowIndex" emptyMessage="Não há tarefas cadastrados." editable="true" draggableRows ="true"
+                     rowKey="#{item.nome}" selectionMode="single" >
+            <p:ajax event="rowEdit" listener="#{tarefa.editar}"/>
+            <p:ajax event="rowReorder" listener="#{tarefa.salvarOrdem}" update="@this" />
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Ordem" />
+                </f:facet>
+                <h:outputText
+                        value="#{rowIndex+1}" />
+            </p:column>
+            <p:column headerText="Tarefa">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{item.nome}" />
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{item.nome}" style="width:100%" />
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            <p:column headerText="O que fazer?">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{item.descricao}" />
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{item.descricao}" style="width:100%" />
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            <p:column headerText="Data" width="150px">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{item.formatDataTarefa}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:datePicker value="#{item.dataTarefa}" showTime="true"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            <p:column width="90px">
+                <p:selectBooleanCheckbox itemLabel="Concluído" value="#{item.concluido}" >
+                    <p:ajax listener="#{tarefa.concluir(item)}" update="dataTable"/>
+                </p:selectBooleanCheckbox>
+            </p:column>
+            <p:column style="width:72px">
+                <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
+            </p:column>
+            <p:column headerText="" style="width:20px;">
+                <p:commandLink action="#{tarefa.excluir(item)}" update="dataTable">
+                    <p:graphicImage value="/images/delete.png" class="imageIcon" />
+                </p:commandLink>
+            </p:column>
+        </p:dataTable>
+    </p:panel>
+    <p:dialog header="Nova Tarefa" id="dialogIncluir" width="400" widgetVar="dialog" closeOnEscape="true"
+              resizable="false">
+        <table>
+            <tr>
+                <td>
+                    <h:outputText value="Tarefa:" />
+                </td>
+                <td>
+                    <p:inputText value="#{tarefa.tarefa.nome}" style="width:200px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:outputText value="O que fazer?" />
+                </td>
+                <td>
+                    <p:inputText value="#{tarefa.tarefa.descricao}" style="width:200px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:outputText value="Data:" />
+                </td>
+                <td>
+                    <p:datePicker value="${tarefa.tarefa.dataTarefa}" showTime="true"  pattern="MM/dd/yyyy HH:mm:ss"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p:commandButton  icon="pi pi-check" styleClass="rounded-button ui-button-flat"
+                                      actionListener="#{tarefa.inserir}" update="formPrinc:dataTable, formPrinc:dialogIncluir"/>
+                </td>
+            </tr>
+        </table>
+    </p:dialog>
+</h:form>
+</body>
+</html>

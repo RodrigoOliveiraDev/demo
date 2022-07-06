@@ -1,0 +1,40 @@
+body{
+    padding:50px;
+    background-position:center;
+}
+.logo{
+    width: 40px;
+    height: 30px;
+}
+.navbar{
+    background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBhIIBwgWFQkVFR4XFRUVFxcVFRcWGRoiHh8VFR8YHSgkGBolGxYVJzEhJSwrLi4uHSUzODMtQDQvMS0BCgoKDg0OGg8PFS0ZHR0tLSsrKy0tLTcrLS0tLS0tLTc3Kys3KysrLTctLS0tLS0tKy0rNy0rLSsrKysrKysrK//AABEIAL0BCwMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIG/8QAHhABAAEDBQEAAAAAAAAAAAAAAAERQfAhMVFxsQL/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFxEBAQEBAAAAAAAAAAAAAAAAACERAf/aAAwDAQACEQMRAD8A7MBnsYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAUAAAAAAI1knrM8XFyACIAAAAAAAAAAAAAAAAAAAAAAlywK6CQCEbgUASds4UAkKABegSArM/NWkToAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//9k=');
+    border-radius: 14px;
+    height:40px;
+    box-shadow: 1px 1px;
+}
+.toDoText{
+    width: 12.985714%;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Libre Baskerville', serif;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+}
+.panel{
+    margin-top: 20px;
+    align-items: center;
+    width: 70%;
+}
+.imageIcon{
+    width: 20px;
+    height: 20px;
+}
+.imageIcon2{
+    width: 30px;
+    height: 30px;
+}
+.ui-calendar .ui-datepicker {
+    height : 200px;
+    font-size: 10px;
+}
