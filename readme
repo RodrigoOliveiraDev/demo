@@ -12,6 +12,9 @@ Concluido: tarefas marcadas como concluidas.
 
 Fiquei com a ideia de criar o tipoTarefa que iria separar as tarefas por listas, para o usuário poder se organizar, mas infelizmente não deu tempo.
 
+arquivos de java eão em src/main
+e do frontEnd estão em webapp
+
 Para executar basta importar o banco de dados
 credenciais localhost porta 5432 nome do banco: postgres user:  postgres senha: masterkey
 basta subir docker compose para executar o servidor do banco.
